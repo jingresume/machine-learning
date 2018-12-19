@@ -20,9 +20,19 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
-
+m = size(X,1);
+for i = 1:m,
+  min = 10000;
+  index = -1;
+  for j = 1:K,
+    dist = norm(X(i,:)-centroids(j,:));
+    if dist < min,
+      min = dist;
+      index = j;
+    endif
+  endfor
+  idx(i) = index;
+endfor
 
 
 
